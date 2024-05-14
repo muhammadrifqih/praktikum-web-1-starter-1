@@ -15,7 +15,7 @@
             $result = mysqli_query($connection,$selectSQL);
             if (!$result) {
             ?>
-            <div class="alert alert-danger">
+            <div class="alert alert-danger" role="alert">
                 <?php echo mysqli_error($connection) ?>
             </div>
         <?php 
@@ -23,7 +23,7 @@
             }
             if (mysqli_num_rows($result)==0) {
                 ?>
-                <div class="alert alert-light">
+                <div class="alert alert-light" role="alert">
                     Data Kosong
                 </div>
                 <?php 
