@@ -2,12 +2,12 @@
 if (isset($_GET["page"])) {
     $page = $_GET["page"];
 } else {
-    $page = "";
+    $page = " ";
 }
 
 switch ($page) {
-    case "";
-    case 'dashboard':
+    case " ";
+    case ' ':
         include "pages/dashboard.php";
         break;
     case 'bagian':
