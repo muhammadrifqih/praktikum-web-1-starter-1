@@ -58,7 +58,7 @@
             }
         }
 
-        $id = $_GET['id'];
+        $nik = $_GET['nik'];
         $selectSQL = "SELECT * FROM karyawan WHERE nik = $nik";
         $result = mysqli_query($connection, $selectSQL);
         if (!$result || mysqli_num_rows($result) == 0) {
@@ -84,7 +84,7 @@
             name="nik"
             class="form-control"
             id="nik"
-            placeholder="<?php echo $nik ?>"
+            value="<?php echo $nik ?>"
             required
           />
         </div>
@@ -95,7 +95,7 @@
             name="nama"
             class="form-control"
             id="nama"
-            placeholder="<?php echo $nama ?>"
+            value="<?php echo $row["nama"] ?>"
             required
           />
         </div>
@@ -106,7 +106,7 @@
             name="tanggal_mulai"
             class="form-control"
             id="tanggal_mulai"
-            placeholder="<?php echo $tanggal_mulai ?>"
+            value="<?php echo $row["tanggal_mulai"] ?>"
             required
           />
         </div>
@@ -117,8 +117,8 @@
             name="gaji_pokok"
             class="form-control"
             id="gaji_pokok"
-            required
-          />
+            value="<?php echo $row["gaji_pokok"] ?>"
+            required />
         </div>
         <div class="mb-3">
           <label for="status_karyawan" class="form-label">Status Karyawan</label>
@@ -135,12 +135,12 @@
             <label for="magang">Magang</label>
           </div>
         </div>
-        <div class="mb-3 mt-3">
+    <div class="mb-3 mt-3">
     <label for="bagian_id" class="form-label">Bagian</label>
     <?php
-    $selectSQL = "SELECT * FROM bagian";
-    $result = mysqli_query($connection, $selectSQL);
-    if (!$result) {
+    $selectSQLBagian = "SELECT * FROM bagian";
+    $result_bagian = mysqli_query($connection, $selectSQLBagian);
+    if (!$result_bagian) {
     ?>
         <div class="alert alert-danger" role="alert">
             <?php echo mysqli_error($connection) ?>
@@ -148,7 +148,7 @@
     <?php
         return;
     }
-    if (mysqli_num_rows($result) == 0) {
+    if (mysqli_num_rows($result_bagian) == 0) {
     ?>
         <div class="alert alert-light" role="alert">
             Data kosong
@@ -160,9 +160,11 @@
     <select class="form-select" aria-label="Default select example" name="bagian_id">
         <option value="" selected> -- Pilih Bagian -- </option>
         <?php
-        while ($row = mysqli_fetch_assoc($result)) {
+        while ($row_bagian = mysqli_fetch_assoc($result_bagian)) {
+            $bagian_selected = $row["bagian_id"] == $row_bagian["id"] ? "selected" : "";
+
         ?>
-            <option value="<?php echo $row["id"] ?>"><?php echo $row["nama"] ?></option>
+            <option value="<?php echo $row_bagian["id"] ?>" <?php echo $bagian_selected ?>><?php echo $row_bagian["nama"] ?></option>
         <?php
         }
         ?>
