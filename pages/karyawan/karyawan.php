@@ -16,7 +16,7 @@
     <div class="row mt-3">
         <div class="col">
             <?php 
-            $selectSQL = "SELECT * FROM karyawan";
+            $selectSQL = "SELECT K. *,B.nama nama_bagian FROM karyawan K LEFT JOIN bagian B ON K.bagian_id = B.id	";
             $result = mysqli_query($connection,$selectSQL);
             if (!$result) {
             ?>
@@ -39,9 +39,10 @@
             <table class="table bg-white rounded shadow-sm  table-hover">
                 <thead>
                     <tr>
-                        <th class="col-1 " width="50">NIK</th>
+                        <th class="col" width="50">NIK</th>
                         <th class="col">Nama Karyawan</th>
-                        <th class="col-2 ">Opsi</th>
+                        <th class="col">Bagian</th>
+                        <th class="col text-center "width="200">Opsi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,6 +56,9 @@
                     </td>
                     <td>
                         <?php echo $row["nama"] ?>
+                    </td>
+                    <td>
+                        <?php echo $row["nama_bagian"] ?>
                     </td>
                     <td class="text-end">
                         <a href="?page=karyawanubah&nik=<?php echo $row['nik'] ?>" class="btn btn-primary">

@@ -1,9 +1,9 @@
 <row id="top" class="mb-3">
     <div class="col">
-        <h3>Hapus Data Bagian</h3>
+        <h3>Hapus Data Karyawan</h3>
     </div>
     <div class="col">
-        <a href="?page=bagian" class="btn btn-primary fload-end">
+        <a href="?page=karyawan" class="btn btn-primary fload-end">
             <i class="fa fa-arrow-circle-left"></i>
             Kembali
         </a>
@@ -13,8 +13,8 @@
     <div class="col">
         <?php 
         include "database/connection.php";
-        $id = $_GET['id'];
-        $sql = "DELETE FROM bagian WHERE id=$id";
+        $nik = $_GET['nik'];
+        $sql = "DELETE FROM karyawan WHERE nik=$nik";
         $result = mysqli_query($connection, $sql);
         if (!$result) {
         ?>
@@ -27,9 +27,9 @@
         ?>
 
 <div class="alert alert-success" role="alert">
-<i class="fa fa-check-circle"></i>
+                <i class="fa fa-check-circle"></i>
                 Hapus data berhasil
-                <meta http-equiv='refresh' content="2;url=?page=bagian">
+                <meta http-equiv='refresh' content="2;url=?page=karyawan">
                 </div>
         <?php 
         }
