@@ -3,7 +3,7 @@
         <h3>Penggajian</h3>
     </div>
     <div class="col">
-        <a href="#" class="btn btn-success float-end">
+        <a href="?page=pilihkaryawanpenggajian" class="btn btn-success float-end">
             <i class="fa fa-plus-circle"></i>
             Tambah
         </a>
@@ -86,7 +86,7 @@ LEFT JOIN karyawan K ON P.karyawan_nik = K.nik WHERE tahun = '$tahun' AND bulan 
                                 <td><?= $row["tahun"] ?></td>
                                 <td class="text-end"><?= number_format($row["gaji_bayar"]) ?></td>
                                 <td>
-                                    <a href="?page=penggajianhapus&id=<?= $row["id"] ?>&bulan=<?= $bulan ?>&tahun<?= $tahun ?>"
+                                    <a href="?page=penggajianhapus&id=<?= $row["id"] ?>&bulan=<?= $bulan ?>&tahun=<?= $tahun ?>"
                                         onclick="javascript: return confirm('Konfirmasi data akan dihapus')"
                                         class="btn btn-danger">
                                         <i class="fa fa-trash"></i>
